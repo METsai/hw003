@@ -48,5 +48,39 @@
            }
        });
    </script>
+   <hr>
+   <script>
+        var arr = [85, 60, 99, 49, 77, 82];
+        
+        bind(arr);
+        
+        render();
+        
+        function bind(data){
+            var selection = d3.select("body")
+                            .selectAll("div")
+                            .data(data);
+            
+            selection.enter().append("div");
+            
+            selection.exit().remove();
+        }
+        
+        function render(){
+            d3.selectAll("body>div").text(function(d, i){
+                return (i+1)+":"+d;
+            })
+            .style({
+                'color': function(d){
+                    if(d<70){
+                        return 'red'
+                    }      
+                }
+            })
+        }
+        console.log(d3.selectAll("div"));
+    </script>
+    <hr>
+    
 </body>
 </html>
